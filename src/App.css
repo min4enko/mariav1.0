@@ -23,7 +23,7 @@ body, html {
 }
 
 main {
-  padding: 20px;
+  padding: 21px;
   flex: 1;
   overflow-y: auto;
 }
