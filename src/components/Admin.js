@@ -14,10 +14,6 @@ const Admin = () => {
     return savedReviews ? JSON.parse(savedReviews) : [];
   });
 
-  const [services, setServices] = useState(() => {
-    const savedServices = localStorage.getItem('services');
-    return savedServices ? JSON.parse(savedServices) : [];
-  });
 
   const [selectedSection, setSelectedSection] = useState('reviews');
   
@@ -30,10 +26,6 @@ const Admin = () => {
   useEffect(() => {
     localStorage.setItem('reviews', JSON.stringify(reviews));
   }, [reviews]);
-
-  useEffect(() => {
-    localStorage.setItem('services', JSON.stringify(services));
-  }, [services]);
 
   const addImage = (data) => {
     const file = data.image[0];
@@ -67,15 +59,6 @@ const Admin = () => {
     setReviews(reviews.filter(review => review.id !== id));
   };
 
-  const addService = (data) => {
-    setServices([...services, { id: uuidv4(), name: data.name, price: data.price }]);
-    reset();
-  };
-
-  const deleteService = (id) => {
-    setServices(services.filter(service => service.id !== id));
-  };
-
   const handleRatingChange = (value) => {
     setValue('rating', value);
   };
@@ -83,9 +66,8 @@ const Admin = () => {
   return (
     <div className="admin">
       <nav>
-        <button onClick={() => setSelectedSection('reviews')}>Отзывы</button>
         <button onClick={() => setSelectedSection('gallery')}>Галерея</button>
-        <button onClick={() => setSelectedSection('services')}>Услуги</button>
+        <button onClick={() => setSelectedSection('reviews')}>Отзывы</button>
       </nav>
 
       {selectedSection === 'reviews' && (
@@ -136,35 +118,6 @@ const Admin = () => {
               </div>
             ))}
           </div>
-        </section>
-      )}
-
-      {selectedSection === 'services' && (
-        <section>
-          <h2>Услуги</h2>
-          <form onSubmit={handleSubmit(addService)}>
-            <input {...register('name')} placeholder="Название услуги" required />
-            <input type="number" {...register('price')} placeholder="Цена" required />
-            <button type="submit">Добавить</button>
-          </form>
-          <table>
-            <thead>
-              <tr>
-                <th>Название услуги</th>
-                <th>Цена</th>
-                <th>Действие</th>
-              </tr>
-            </thead>
-            <tbody>
-              {services.map(service => (
-                <tr key={service.id}>
-                  <td>{service.name}</td>
-                  <td>{service.price} руб.</td>
-                  <td><button onClick={() => deleteService(service.id)}>Удалить</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </section>
       )}
     </div>

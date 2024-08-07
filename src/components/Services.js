@@ -1,25 +1,43 @@
-import React, { useState, useEffect } from 'react';
-
 const Services = () => {
-  const [services, setServices] = useState(() => {
-    const savedServices = localStorage.getItem('services');
-    return savedServices ? JSON.parse(savedServices) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('services', JSON.stringify(services));
-  }, [services]);
-
   return (
     <div className="services">
-      <h2>Услуги</h2>
-      <ul>
-        {services.map(service => (
-          <li key={service.id}>
-            {service.name} - {service.price} руб.
-          </li>
-        ))}
-      </ul>
+      <h2>PRICE LIST</h2>
+      <div className="service-category">
+        <h3>Наращивание ресниц</h3>
+        <ul>
+          <li>Классическое: 2000 руб.</li>
+          <li>Объем 1,5D: 2200 руб.</li>
+          <li>Объем 2D: 2500 руб.</li>
+          <li>Объем 2,5D: 2700 руб.</li>
+          <li>Объем 3D: 3000 руб.</li>
+          <li>Неполное наращивание: 1500</li>
+        </ul>
+        <h3>Ламинирование ресниц</h3>
+        <ul>
+          <li>Velvet: 1500 руб.</li>
+        </ul>
+        <h3>Дополнительные услуги</h3>
+        <ul>
+          <li>Коррекция ресниц: От стоимости 50%</li>
+          <li>Снятие работы другого мастера: 300 руб.</li>
+          <li>Снятие нашей работы без наращивания: 300 руб.</li>
+          <li>Окрашивание ресниц: 400 руб.</li>
+        </ul>
+        <h3>Уход для бровей</h3>
+        <ul>
+          <li>Долговременная укладка бровей (с окрашиванием): 1500 руб.</li>
+          <li>Долговременная укладка бровей (без окрашивания): 1300 руб.</li>
+          <li>Художественное оформление бровей (коррекция + окрашивание хной/краской): 800 руб.</li>
+          <li>Окрашивание бровей: 400 руб.</li>
+          <li>Коррекция бровей: 300 руб.</li>
+          <li>Оформление мужских бровей: 300 руб.</li>
+        </ul>
+        <h3>Перманентный макияж</h3>
+        <ul>
+          <li>Первичная процедура (брови/губы): 5000 руб.</li>
+          <li>Повторная процедура (брови/губы): 3000 руб.</li>
+        </ul>
+      </div>
     </div>
   );
 };

@@ -23,7 +23,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>Наращивание ресниц от мастера Анны</h1>
+          <h1>Наращивание ресниц от мастера Марии</h1>
           <Navigation authenticated={authenticated} />
         </header>
         <main>
@@ -49,14 +49,6 @@ const Home = () => (
     <section className="about">
       <h2>О мастере</h2>
       <p>Привет! Меня зовут Мария, и я профессиональный мастер по наращиванию ресниц с опытом более 5 лет.</p>
-    </section>
-    <section className="services">
-      <h2>Услуги</h2>
-      <ul>
-        <li>Классическое наращивание ресниц</li>
-        <li>Объемное наращивание ресниц</li>
-        <li>Коррекция и снятие ресниц</li>
-      </ul>
     </section>
   </div>
 );
